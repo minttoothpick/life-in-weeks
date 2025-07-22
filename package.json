@@ -10,6 +10,7 @@
     "debug": "DEBUG=Eleventy* npx eleventy --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "js-yaml": "^4.1.0"
   }
 }

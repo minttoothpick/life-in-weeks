@@ -1,4 +1,9 @@
+const yaml = require('js-yaml');
+
 module.exports = (eleventyConfig) => {
+  // Add YAML data file support (https://www.11ty.dev/docs/data-custom/)
+  eleventyConfig.addDataExtension('yml', (contents) => yaml.load(contents));
+
   return {
     markdownTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
