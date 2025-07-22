@@ -1,0 +1,15 @@
+{
+  "name": "life-in-weeks",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "scripts": {
+    "prod": "ELEVENTY_ENV=prod npx eleventy",
+    "dev": "ELEVENTY_ENV=dev npx eleventy --serve",
+    "debug": "DEBUG=Eleventy* npx eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
