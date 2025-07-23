@@ -110,7 +110,8 @@ module.exports = function (data) {
       // If week overlaps with timespan, but is NOT the week containing the start date
       const overlaps =
         weekEnd.isAfter(spanStart) && weekStart.isBefore(spanEnd.add(1, 'day'));
-      const isStartWeek = weekStart.isSame(spanStart, 'day');
+      const isStartWeek =
+        spanStart.isSameOrAfter(weekStart) && spanStart.isBefore(weekEnd);
       return overlaps && !isStartWeek;
     });
   }

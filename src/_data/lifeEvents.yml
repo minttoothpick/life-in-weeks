@@ -69,3 +69,10 @@ timespans:
     category: job
     start: '2024-05-27'
     end: '2025-09-30'
+
+  - title: Living in Apopka, FL
+    icon: 🏡
+    hide_from_grid: true
+    category: living
+    start: '2024-08-11'
+    end:
