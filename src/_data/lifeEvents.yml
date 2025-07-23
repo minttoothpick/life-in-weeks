@@ -1,0 +1,77 @@
+'1985-02-11':
+  - title: I am born
+    icon: 👶
+    desc: In Orlando, Florida, USA.
+    category: self
+
+'1985-02-18':
+  - title: A test
+    icon: 🤢
+    desc: Description
+    category: dunno
+
+'2014-08-13':
+  - title: My nephew is born
+    icon: 👶
+    category: family
+
+'2021-04-02':
+  - title: GE is born
+    icon: 🤎
+    category: family
+
+'2024-01-06':
+  - title: GN is born
+    icon: 🤎
+    category: family
+
+'2023-01-16':
+  - title: RIP HB
+    icon: 💔
+    category: losses
+
+'2023-05-24':
+  - title: RIP JJ
+    icon: 💔
+    category: losses
+
+'2023-10-21':
+  - title: RIP Gma L
+    icon: 💔
+    category: losses
+
+'2025-04-30':
+  - title: DRP
+    icon: 😕
+    category: job
+
+'2061-09-11':
+  - title: Maybe I will die (according to US SSA)
+    icon: 🪦
+    category: self
+
+timespans:
+  - title: Living in Orlando, FL
+    icon: 🏡
+    hide_from_grid: true
+    category: living
+    start: '1985-02-11'
+    end: '2006-10-12'
+
+  - title: Living in North Carolina
+    icon: 🏡
+    category: living
+    start: '2006-10-20'
+    end: '2024-08-10'
+
+  - title: Working at SRS
+    icon: 💼
+    category: job
+    start: '2015-11-25'
+    end: '2024-05-19'
+
+  - title: Working at NRS & FPL
+    icon: 💼
+    category: job
+    start: '2024-05-27'
+    end: '2025-09-30'

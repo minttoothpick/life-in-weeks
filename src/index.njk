@@ -1,7 +1,114 @@
 ---
-title: Hello
+title: Life in Weeks
+layout: layouts/base
+start_date: 1985-02-11
+end_year: 2086
 ---
+<article class="container flow">
+  <div style="display:flex;align-items:start;">
+    <header class="flow prose-width">
+      <h1>{{ title | safe }}</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </header>
+    <img src="/images/cloud-with-hourglass.png" style="max-width:350px;">
+  </div>
 
-Hiya
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
 
-{{ lifeInWeeks | dump }}
+  <div class="life-weeks-table">
+    {% for week in lifeInWeeks %}
+      {# Set tooltips #}
+      {% set tooltip = "Week " ~ (week.index) ~ " / " ~ week.date %}
+
+      {% if week.events.length %}
+        {% set tooltip = tooltip + "<br>" %}
+        {% for event in week.events %}
+          {% set tooltip = tooltip + event.icon + " " + event.title %}
+          {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if week.timespans.length %}
+        {% set tooltip = tooltip + "<br>" %}
+        {% for span in week.timespans %}
+          {% set tooltip = tooltip + span.icon + " " + span.title %}
+          {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <div
+        class="week-box{% if week.isPast %} past{% endif %}"
+        data-tippy-content="{{ tooltip | safe }}"
+        tabindex="0"
+      >
+        {% for event in week.events %}
+          {% if not event.hide_from_grid %}
+            <span class="event-icon">{{ event.icon }}</span>
+            <span class="event-name">{{ event.title }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</article>
+
+<style>
+.life-weeks-table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s03);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.week-box {
+  height: 2rem;
+  padding: 6px 10px;
+  border: 2px solid #B6C8A9;
+  border-radius: var(--s02);
+  background-color: white;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: var(--s03);
+
+  font-size: 1rem;
+  cursor: default;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.week-box.past {
+  background-color: #C8EAD3;
+}
+
+.week-box:hover {
+  background-color: #CFFFE5;
+  color: #695958;
+}
+
+.event-icon {
+  flex-shrink: 0;
+  font-size: 1.1em;
+}
+
+.event-name {
+  white-space: nowrap;
+}
+
+.tippy-box {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    tippy('.week-box', {
+      allowHTML: true,
+      placement: 'top',
+      theme: 'light-border',
+    });
+  });
+</script>
