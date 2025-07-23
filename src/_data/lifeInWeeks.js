@@ -23,7 +23,7 @@ module.exports = function (data) {
   for (const span of timespans) {
     if (!lifeEvents[span.start]) lifeEvents[span.start] = [];
     lifeEvents[span.start].push({
-      name: span.name,
+      title: span.title,
       icon: span.icon,
       category: span.category || '',
       isTimespanStart: true,
@@ -40,7 +40,7 @@ module.exports = function (data) {
   const today = dayjs();
 
   // Calculate which week is the current one
-  const currentWeekIndex = today.diff(startDate.startOf('week'), 'week');
+  const currentWeekIndex = today.diff(startDate, 'week') + 1;
 
   // Add birthday items
   for (let year = startDate.year() + 1; year <= endYear; year++) {
@@ -58,20 +58,18 @@ module.exports = function (data) {
 
   // Create an array of weeks between start and end date
   const weeks = [];
-  let current = startDate.startOf('week');
-  let i = 0;
-  while (current.isBefore(endDate)) {
-    const weekStart = current;
-    const weekEnd = current.add(1, 'week');
+  let weekStartDate = startDate;
+  let i = 1;
+  while (weekStartDate.isBefore(endDate)) {
     weeks.push({
-      date: weekStart.format('YYYY-MM-DD'),
-      weekStart: weekStart.format('YYYY-MM-DD'),
-      weekEnd: weekEnd.format('YYYY-MM-DD'),
+      date: weekStartDate.format('YYYY-MM-DD'),
+      weekStart: weekStartDate.format('YYYY-MM-DD'),
+      weekEnd: weekStartDate.add(1, 'week').format('YYYY-MM-DD'),
       index: i,
       events: [],
       isPast: i <= currentWeekIndex,
     });
-    current = weekEnd;
+    weekStartDate = weekStartDate.add(1, 'week');
     i++;
   }
 
@@ -112,7 +110,7 @@ module.exports = function (data) {
       // If week overlaps with timespan, but is NOT the week containing the start date
       const overlaps =
         weekEnd.isAfter(spanStart) && weekStart.isBefore(spanEnd.add(1, 'day'));
-      const isStartWeek = weekStart.isSame(spanStart.startOf('week'));
+      const isStartWeek = weekStart.isSame(spanStart, 'day');
       return overlaps && !isStartWeek;
     });
   }
