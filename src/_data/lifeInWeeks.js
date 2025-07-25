@@ -19,7 +19,9 @@ module.exports = function (data) {
   // Remove timespans array from main events
   delete lifeEvents.timespans;
 
-  // Inject timespan start as an event
+  /**
+   * Inject timespan start as an event
+   */
   for (const span of timespans) {
     if (!lifeEvents[span.start]) lifeEvents[span.start] = [];
     lifeEvents[span.start].push({

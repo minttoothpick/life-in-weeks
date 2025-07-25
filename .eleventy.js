@@ -4,6 +4,8 @@ module.exports = (eleventyConfig) => {
   // Add YAML data file support (https://www.11ty.dev/docs/data-custom/)
   eleventyConfig.addDataExtension('yml', (contents) => yaml.load(contents));
 
+  eleventyConfig.addPassthroughCopy('src/images');
+
   return {
     markdownTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
