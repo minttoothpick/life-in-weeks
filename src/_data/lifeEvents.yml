@@ -4,8 +4,60 @@
     desc: In Orlando, Florida, USA.
     category: self
 
+'1986-04-26':
+  - title: Chernobyl nuclear disaster
+    icon: ☢️
+    category: world
+
+'1989-11-09':
+  - title: Fall of Berlin Wall
+    category: world
+
+'1991-12-01':
+  - title: Dissolution of USSR
+    category: world
+
+'1998-12-19':
+  - title: Clinton impeached
+    category: world
+
 '2001-09-11':
   - title: 9/11
+    category: world
+
+'2001-10-01':
+  - title: U.S. invades Afghanistan
+    category: world
+
+'2003-03-20':
+  - title: U.S. invades Iraq
+    category: world
+
+'2005-08-29':
+  - title: Hurricane Katrina
+    icon: 🌀
+    category: world
+
+'2008-11-04':
+  - title: Obama elected president
+    category: world
+
+'2015-06-26':
+  - title: Same-sex marriage legalized
+    icon: 🏳️‍🌈
+    category: world
+
+'2020-03-11':
+  - title: Covid-19 pandemic declared
+    icon: 🦠
+    category: world
+
+'2021-01-06':
+  - title: U.S. Capitol attack
+    category: world
+
+'2022-02-24':
+  - title: Russia invades Ukraine
     category: world
 
 '2025-04-30':

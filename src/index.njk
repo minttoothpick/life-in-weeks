@@ -10,15 +10,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <img src="/images/drawing.svg" alt="" width="866" height="468">
+  <img src="/images/drawing.svg" alt="Drawing of human figure stooped over and reaching for an hourglass; some abstract shapes and a gridded sheet of paper surround them" width="866" height="468">
   <article class="flow">
     <header class="flow">
-      <h1>My Life in Weeks</h1>
-      <p>Ah, yes, I do love a combination data visualization/mortality reminder. Each box on this grid represents one week of my life. It is interspersed with events and situations. (Although as I filled this out, I began to feel a bit squeamish in a privacy/overexposure way. So I might stick to world events rather than personal ones here. 🤷)</p>
+      <h1 id="pageTitle">My Life in Weeks</h1>
+      <p>Ah, yes, I do love a combination data visualization/mortality reminder. Each box on this grid represents one week of my life. It is interspersed with events and situations. (Although... as I filled this out, I began to feel a bit squeamish in a privacy/overexposure way. So right now this is an odd mixture of pivotal world events and places where I lived and worked. 🤷)</p>
       <p>A few implementations of this concept have popped up on the internet recently. It’s based on <a href="https://waitbutwhy.com/2014/05/life-weeks.html">a 2014 post by Tim Urban at Wait But Why</a> that presented some interesting ways to visualize your finitude. Then <a href="https://busterbenson.com/life-in-weeks">Buster Benson made one</a>. Most recently, I came across <a href="https://weeks.ginatrapani.org/">a version by Gina Trapani</a>.</p>
     </header>
 
-    <div class="life-weeks-table">
+    <div class="life-weeks-table" style="--flow-space: 2em;">
       {% for week in lifeInWeeks %}
         {# Set tooltips #}
         {% set tooltip = "Week " ~ (week.index) ~ " / " ~ week.date %}

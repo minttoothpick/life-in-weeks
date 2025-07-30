@@ -16,13 +16,15 @@
 body {
   min-height: 100vh;
   background-color: var(--color-white);
-  background-image: url('/images/border--top.svg');
-  background-size: calc(100% + 14em) auto;
-  background-position: top -3em left -2em;
+  background-image: url('/images/border--top2.svg');
+  /* background-size: calc(100% + 14em) auto; */
+  background-size: 100% auto;
+  /* background-position: top -3em left -2em; */
   background-repeat: no-repeat;
   color: var(--color-brown);
   margin: 0;
-  padding: 3em;
+  padding-block: 3vw;
+  padding-inline: 10vw;
   font-size: 1.5rem;
   font-family: 'DM Mono', monospace;
 }
@@ -33,7 +35,8 @@ body > * {
 }
 
 h1 {
-  font-size: 10rem;
+  font-size: 10vw;
+  white-space: nowrap;
   margin-block: 0;
   margin-block-start: -5rem;
   font-family: 'Dynapuff', sans-serif;
