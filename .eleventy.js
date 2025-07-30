@@ -5,6 +5,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addDataExtension('yml', (contents) => yaml.load(contents));
 
   eleventyConfig.addPassthroughCopy('src/images');
+  eleventyConfig.addPassthroughCopy('src/style.css');
 
   return {
     markdownTemplateEngine: 'njk',
