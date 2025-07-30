@@ -5,9 +5,9 @@
   "license": "ISC",
   "author": "",
   "scripts": {
-    "prod": "ELEVENTY_ENV=prod npx eleventy",
-    "dev": "ELEVENTY_ENV=dev npx eleventy --serve",
-    "debug": "DEBUG=Eleventy* npx eleventy --serve"
+    "prod": "npx eleventy",
+    "dev": "npx eleventy --serve",
+    "debug": "npx eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
