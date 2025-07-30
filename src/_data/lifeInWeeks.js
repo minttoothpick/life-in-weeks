@@ -35,10 +35,7 @@ module.exports = function (data) {
     });
   }
 
-  const startDateStr = data.start_date || '1985-02-11';
-  const endYear = data.end_year || 2086;
-
-  const startDate = dayjs(startDateStr);
+  const startDate = dayjs('1985-02-11');
   const endDate = startDate.add(100, 'year');
   const today = dayjs();
 
@@ -46,7 +43,7 @@ module.exports = function (data) {
   const currentWeekIndex = today.diff(startDate, 'week') + 1;
 
   // Add birthday items
-  for (let year = startDate.year() + 1; year <= endYear; year++) {
+  for (let year = startDate.year() + 1; year <= endDate.year(); year++) {
     const birthdayDate = startDate.year(year).format('YYYY-MM-DD');
     const age = year - startDate.year();
 
