@@ -62,6 +62,10 @@ img {
   height: auto;
 }
 
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
 .life-weeks-table {
   display: flex;
   flex-wrap: wrap;
@@ -73,7 +77,7 @@ img {
   min-width: 1.5rem;
   padding: 4px 8px;
   border: 2px solid var(--color-blue);
-  border-radius: var(--s02, 0.5rem);
+  border-radius: 0.5rem;
   background-color: var(--color-light-blue);
   box-sizing: border-box;
 
