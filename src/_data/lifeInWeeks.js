@@ -5,6 +5,7 @@ const dayjs = require('dayjs');
 const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
 dayjs.extend(isSameOrAfter);
 
+// Parse that YAML
 function loadLifeEvents() {
   const filePath = path.join(__dirname, 'lifeEvents.yml');
   const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -38,7 +39,7 @@ module.exports = function (data) {
   const endYear = data.end_year || 2086;
 
   const startDate = dayjs(startDateStr);
-  const endDate = dayjs(`${endYear}-01-01`);
+  const endDate = startDate.add(100, 'year');
   const today = dayjs();
 
   // Calculate which week is the current one
