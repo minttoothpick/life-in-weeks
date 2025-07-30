@@ -1,59 +1,70 @@
----
-title: My Life in Weeks
-layout: layouts/base
----
-<article class="container flow">
-  <header class="flow prose-width">
-    <h1>{{ title | safe }}</h1>
-    <p>Ah, yes, I do love a combination data visualization/mortality reminder. Each box on this grid represents one week of my life. It is interspersed with events and situations. (Although as I filled this out, I began to feel a bit squeamish in a privacy/overexposure way. So I might stick to world events rather than personal ones here. 🤷)</p>
-    <p>A few implementations of this concept have popped up on the internet recently. It’s based on <a href="https://waitbutwhy.com/2014/05/life-weeks.html">a 2014 post by Tim Urban at Wait But Why</a> that presented some interesting ways to visualize your finitude. Then <a href="https://busterbenson.com/life-in-weeks">Buster Benson made one</a>. Most recently, I came across <a href="https://weeks.ginatrapani.org/">a version by Gina Trapani</a>.</p>
-  </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Life in Weeks</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=dm-mono:400|dynapuff:700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <img src="/images/drawing.svg" alt="" width="866" height="468">
+  <article class="container flow">
+    <header class="flow prose-width">
+      <h1>My Life in Weeks</h1>
+      <p>Ah, yes, I do love a combination data visualization/mortality reminder. Each box on this grid represents one week of my life. It is interspersed with events and situations. (Although as I filled this out, I began to feel a bit squeamish in a privacy/overexposure way. So I might stick to world events rather than personal ones here. 🤷)</p>
+      <p>A few implementations of this concept have popped up on the internet recently. It’s based on <a href="https://waitbutwhy.com/2014/05/life-weeks.html">a 2014 post by Tim Urban at Wait But Why</a> that presented some interesting ways to visualize your finitude. Then <a href="https://busterbenson.com/life-in-weeks">Buster Benson made one</a>. Most recently, I came across <a href="https://weeks.ginatrapani.org/">a version by Gina Trapani</a>.</p>
+    </header>
 
-  <div class="life-weeks-table">
-    {% for week in lifeInWeeks %}
-      {# Set tooltips #}
-      {% set tooltip = "Week " ~ (week.index) ~ " / " ~ week.date %}
+    <div class="life-weeks-table">
+      {% for week in lifeInWeeks %}
+        {# Set tooltips #}
+        {% set tooltip = "Week " ~ (week.index) ~ " / " ~ week.date %}
 
-      {% if week.events.length %}
-        {% set tooltip = tooltip + "<br>" %}
-        {% for event in week.events %}
-          {% set tooltip = tooltip + event.icon + " " + event.title %}
-          {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
-        {% endfor %}
-      {% endif %}
+        {% if week.events.length %}
+          {% set tooltip = tooltip + "<br>" %}
+          {% for event in week.events %}
+            {% set tooltip = tooltip + event.icon + " " + event.title %}
+            {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
+          {% endfor %}
+        {% endif %}
 
-      {% if week.timespans.length %}
-        {% set tooltip = tooltip + "<br>" %}
-        {% for span in week.timespans %}
-          {% set tooltip = tooltip + span.icon + " " + span.title %}
-          {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
-        {% endfor %}
-      {% endif %}
+        {% if week.timespans.length %}
+          {% set tooltip = tooltip + "<br>" %}
+          {% for span in week.timespans %}
+            {% set tooltip = tooltip + span.icon + " " + span.title %}
+            {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
+          {% endfor %}
+        {% endif %}
 
-      <div
-        class="week-box{% if week.isPast %} past{% endif %}"
-        data-tippy-content="{{ tooltip | safe }}"
-        tabindex="0"
-      >
-        {% for event in week.events %}
-          {% if not event.hide_from_grid %}
-            <span class="event-icon">{{ event.icon }}</span>
-            <span class="event-title">{{ event.title }}</span>
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endfor %}
-  </div>
-</article>
+        <div
+          class="week-box{% if week.isPast %} past{% endif %}"
+          data-tippy-content="{{ tooltip | safe }}"
+          tabindex="0"
+        >
+          {% for event in week.events %}
+            {% if not event.hide_from_grid %}
+              <span class="event-icon">{{ event.icon }}</span>
+              <span class="event-title">{{ event.title }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </article>
 
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="https://unpkg.com/tippy.js@6"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    tippy('.week-box', {
-      allowHTML: true,
-      placement: 'top',
-      theme: 'light-border',
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      tippy('.week-box', {
+        allowHTML: true,
+        placement: 'top',
+        theme: 'light-border',
+      });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
