@@ -111,3 +111,22 @@ img {
 .event-title {
   white-space: nowrap;
 }
+
+footer {
+  border-top: 2px solid var(--color-salmon);
+  margin-block-start: 2em;
+  padding-block-start: 2em;
+}
+
+footer ul {
+  display: flex;
+  margin-block: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+footer li:not(:last-of-type)::after {
+  content: '/';
+  color: var(--color-salmon);
+  padding-inline: 1em;
+}
